@@ -66,3 +66,17 @@ for row in ans1:
     for elem in row:
         print(elem, end=" ")
     print()
+
+def IsContainsConsonants(s):
+    isContain = False
+    for letter in s:
+        if letter.lower() in 'qwrtpsdfghjklzxcvbnm':
+            isContain = True
+    return isContain
+
+isContain = IsContainsConsonants(input("Enter string: "))
+
+if (isContain):
+    print("Contains")
+else:
+    print("Not contains")

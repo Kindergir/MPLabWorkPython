@@ -88,6 +88,14 @@ if (isContain):
 else:
     print("Not contains")
 
+def WordsWithoutHyphenAndWithConsontants(s):
+    text = SplitIntoWords(s)
+    res = list()
+    for word in text:
+        if (IsContainsConsonants(word) and (not IsContainsHyphen(word))):
+            res.append(word)
+    return res
+
 def SplitIntoWords(s) -> list():
     l = []
     ss = ""
@@ -97,12 +105,23 @@ def SplitIntoWords(s) -> list():
             ss = ""
         else:
             ss += x
-            #l.append(ss)
+    l.append(ss)
     return l
 
-text = SplitIntoWords(input("Enter text: "))
+text = WordsWithoutHyphenAndWithConsontants(input("Enter words"))
 
 for word in text:
-    if (IsContainsConsonants(word) and (not IsContainsHyphen(word))):
-        print(word, end=' ')
+    print(word, end=' ')
     print()
+
+wordsCount = dict()
+
+for word in text:
+    lowerWord = word.lower()
+    if lowerWord in wordsCount:
+        wordsCount[lowerWord] = wordsCount[lowerWord] + 1
+    else:
+        wordsCount[lowerWord] = 1
+
+for w in wordsCount.items():
+    print("{0}:".format(w))

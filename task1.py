@@ -1,3 +1,4 @@
+import math
 a = list()
 sa = input("Enter numbers: ").split(" ")
 
@@ -125,3 +126,68 @@ for word in text:
 
 for w in wordsCount.items():
     print("{0}:".format(w))
+
+def IsPerfectSquare(x):
+    sq = math.floor(math.sqrt(x))
+    res = False
+    if (sq ** 2 == x):
+        res = True
+    return res
+
+def IsEven(x):
+    res = False
+    if (x % 2 == 0):
+        res = True
+    return res
+
+def Intersect(a, b):
+    c = list()
+    for el in a:
+        if ((el in b) & (not (el in c))):
+            c.append(el)
+    return c
+
+def Unoin(a, b):
+    c = list()
+    for el in a:
+        if (not el in c):
+            c.append(el)
+    for el in b:
+        if (not el in c):
+            c.append(el)
+    return c
+
+def Difference(a, b):
+    c = list()
+    for el in a:
+        if (not el in b):
+            c.append(el)
+    return c
+
+def SymmetricDifference(a, b):
+    c = list()
+    for el in a:
+        if (not el in b):
+            c.append(el)
+    for el in b:
+        if ((not el in a) & (not el in c)):
+            c.append(el)
+
+sett = list()
+sa = input("Enter numbers: ").split(" ")
+for s in sa:
+    sett.append(int(s))
+
+a = list()
+b = list()
+
+for el in sett:
+    if (IsEven(el)):
+        a.append(el)
+    if (IsPerfectSquare(el)):
+        b.append(el)
+
+print("Intersect: {0}".format(Intersect(a, b)))
+print("Union: {0}".format(Unoin(a, b)))
+print("Difference: {0}".format(Difference(a, b)))
+print("Symmetric difference: {0}".format(SymmetricDifference(a, b)))

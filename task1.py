@@ -74,9 +74,35 @@ def IsContainsConsonants(s):
             isContain = True
     return isContain
 
+def IsContainsHyphen(s):
+    isContain = False
+    for letter in s:
+        if letter.lower() in '-':
+            isContain = True
+    return isContain
+
 isContain = IsContainsConsonants(input("Enter string: "))
 
 if (isContain):
     print("Contains")
 else:
     print("Not contains")
+
+def SplitIntoWords(s) -> list():
+    l = []
+    ss = ""
+    for x in s:
+        if x == " " or x == ',' or x == '. ' or x == '? ' or x == '! ':
+            l.append(ss)
+            ss = ""
+        else:
+            ss += x
+            #l.append(ss)
+    return l
+
+text = SplitIntoWords(input("Enter text: "))
+
+for word in text:
+    if (IsContainsConsonants(word) and (not IsContainsHyphen(word))):
+        print(word, end=' ')
+    print()
